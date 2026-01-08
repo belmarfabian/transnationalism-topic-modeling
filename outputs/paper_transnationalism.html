@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Transnacionalismo: Análisis de Topic Modeling (1990-2024)</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.85;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            background: #fff;
+        }
+        h1 {
+            font-size: 1.9em;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 45px;
+        }
+        h3 { font-size: 1.15em; color: #34495e; margin-top: 30px; }
+        .authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .abstract {
+            background: #f8f9fa;
+            padding: 25px;
+            border-left: 4px solid #3498db;
+            margin: 30px 0;
+        }
+        p { text-align: justify; margin-bottom: 16px; }
+        .figure-box {
+            background: #f0f4f8;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .figure-box a {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .figure-box a:hover { background: #2980b9; }
+        .figure-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 12px;
+            font-style: italic;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th { background: #34495e; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .emerge { background: #d4edda; }
+        .decline { background: #f8d7da; }
+        .note {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+        hr { border: none; border-top: 1px solid #ddd; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+<h1>La Evolución del Campo de Estudios sobre Transnacionalismo: Un Análisis Computacional (1990-2024)</h1>
+
+<p class="authors">Daniel Chernilo & Fabián Rivas<br>
+<em>Borrador de trabajo — Diciembre 2024</em></p>
+
+<div class="abstract">
+    <strong>Resumen.</strong> Este artículo examina la evolución temática del campo de estudios sobre transnacionalismo mediante topic modeling aplicado a 21,394 abstracts (1990-2024). Los resultados revelan: (1) consolidación teórica del campo, con el tópico "Teoría y Estudios" creciendo de 18% a 31%; (2) giro hacia perspectivas micro-sociales, con "Migración y Familia" emergiendo como el de mayor crecimiento (+10.5 puntos); y (3) declive de marcos macro-económicos y de seguridad. Se identifica un punto de inflexión entre 2003-2005 donde las aproximaciones teóricas superaron definitivamente a los enfoques jurídico-institucionales.
+</div>
+
+<h2>1. Introducción</h2>
+
+<p>El concepto de transnacionalismo ha experimentado una notable trayectoria en las ciencias sociales desde su emergencia sistemática a inicios de los años noventa. Lo que comenzó como una categoría descriptiva para capturar las prácticas de migrantes que mantenían vínculos simultáneos con sus sociedades de origen y destino —en la formulación clásica de Glick Schiller, Basch y Blanc-Szanton (1992)— se ha convertido en un campo de estudios con pretensiones teóricas propias. Sin embargo, esta evolución no ha sido lineal ni exenta de tensiones internas. El campo ha debido negociar entre aproximaciones macro-estructurales heredadas de la economía política y perspectivas micro-sociológicas atentas a las prácticas cotidianas.</p>
+
+<p>El presente artículo ofrece un análisis sistemático de esta evolución mediante técnicas de modelado de tópicos aplicadas a un corpus de 21,394 abstracts de artículos académicos que mencionan "transnacionalismo" en sus resúmenes, publicados entre 1990 y 2024. A diferencia de las revisiones narrativas tradicionales, este enfoque computacional permite identificar patrones de cambio temático que escapan a la lectura individual.</p>
+
+<h2>2. Datos y Método</h2>
+
+<p>El corpus fue construido a partir de OpenAlex, una base de datos bibliométrica de acceso abierto. Se seleccionaron todos los artículos que contienen el término "transnationalism" en su abstract, publicados entre 1990 y 2024 (N=24,000). Tras filtrar registros sin abstract válido, el corpus final comprende 21,394 documentos con una media de 181 palabras por abstract.</p>
+
+<p>Para el análisis temático se implementó Latent Dirichlet Allocation (LDA), especificando 15 tópicos tras evaluar métricas de coherencia. Cada documento recibió una asignación probabilística a los 15 tópicos, seleccionándose el tópico dominante para los análisis de distribución.</p>
+
+<div class="note">
+    <strong>Nota metodológica:</strong> Las visualizaciones temporales utilizan suavizado de media móvil de 3 años para reducir ruido interanual.
+</div>
+
+<h2>3. Resultados</h2>
+
+<h3>3.1 Estructura general del campo</h3>
+
+<p>El modelo identificó 15 tópicos. La Tabla 1 presenta los principales ordenados por prevalencia.</p>
+
+<table>
+    <thead>
+        <tr><th>Tópico</th><th>Etiqueta</th><th>Términos principales</th><th>N</th><th>%</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>T04</td><td><strong>Teoría y Estudios</strong></td><td>social, studies, national, literature, field, border</td><td>6,121</td><td>28.6%</td></tr>
+        <tr><td>T02</td><td><strong>Derecho y Gobernanza</strong></td><td>international, european, law, state, governance, EU</td><td>3,129</td><td>14.6%</td></tr>
+        <tr><td>T09</td><td><strong>Cultural / Sur Global</strong></td><td>cultural, global, south, local, identity, urban</td><td>2,411</td><td>11.3%</td></tr>
+        <tr><td>T00</td><td><strong>Migración y Familia</strong></td><td>migration, migrants, family, children, care, workers</td><td>2,254</td><td>10.5%</td></tr>
+        <tr><td>T07</td><td><strong>Terrorismo / Rel. Int.</strong></td><td>countries, foreign, terrorism, domestic, regional</td><td>1,918</td><td>9.0%</td></tr>
+        <tr><td>T13</td><td><strong>Diáspora e Historia</strong></td><td>history, diaspora, war, century, nation, religious</td><td>1,256</td><td>5.9%</td></tr>
+        <tr><td>T12</td><td><strong>Economía / China</strong></td><td>economic, china, chinese, economy, market, production</td><td>818</td><td>3.8%</td></tr>
+    </tbody>
+</table>
+
+<p>La distribución revela una estructura jerárquica donde "Teoría y Estudios" concentra casi un tercio del corpus. Esta configuración sugiere un campo que ha desarrollado masa crítica de reflexión metateórica, rasgo típico de disciplinas en consolidación.</p>
+
+<h3>3.2 Evolución temporal</h3>
+
+<div class="figure-box">
+    <a href="fig_temporal.html" target="_blank">📊 Abrir Figura 1: Evolución Temporal (interactiva)</a>
+    <p class="figure-caption">Figura 1. Proporción anual de artículos por tópico (1990-2024), suavizado 3 años. Los seis tópicos representados concentran el 79% del corpus.</p>
+</div>
+
+<p>El análisis temporal revela tres fases distintivas. La primera (1990-2002) muestra un campo dominado por aproximaciones jurídico-institucionales, con "Derecho y Gobernanza" alcanzando ~19%. El tópico "Terrorismo/Relaciones Internacionales" experimenta un pico notable post-2001.</p>
+
+<p>La segunda fase (2003-2012) marca el punto de inflexión central. Entre 2003 y 2005 se produce el cruce definitivo entre "Teoría/Estudios" y "Derecho/Gobernanza": la reflexión teórica supera por primera vez a los enfoques jurídicos y nunca volverá a ceder esa posición. Este período coincide con trabajos fundacionales como el "social field approach" de Levitt y Glick Schiller (2004).</p>
+
+<p>La tercera fase (2013-2024) consolida estas tendencias: "Teoría/Estudios" estabiliza su predominio en ~30%, mientras "Migración y Familia" pasa de ~8% a ~15%, indicando un giro hacia perspectivas micro-sociales atentas a cuidados transnacionales y reproducción social.</p>
+
+<h3>3.3 Tendencias divergentes</h3>
+
+<div class="figure-box">
+    <a href="fig_divergent.html" target="_blank">📊 Abrir Figura 2: Tendencias Divergentes (interactiva)</a>
+    <p class="figure-caption">Figura 2. Panel superior: tópicos emergentes. Panel inferior: tópicos en declive. La divergencia se acentúa desde 2005.</p>
+</div>
+
+<p>Comparando 1990s versus 2020s:</p>
+
+<table>
+    <thead><tr><th>Tópico</th><th>1990s</th><th>2020s</th><th>Cambio</th></tr></thead>
+    <tbody>
+        <tr class="emerge"><td>Teoría y Estudios</td><td>19.2%</td><td>31.1%</td><td><strong>+11.9</strong></td></tr>
+        <tr class="emerge"><td>Migración y Familia</td><td>3.1%</td><td>13.6%</td><td><strong>+10.5</strong></td></tr>
+        <tr class="emerge"><td>Educación y Derechos</td><td>1.9%</td><td>5.8%</td><td><strong>+3.9</strong></td></tr>
+        <tr class="decline"><td>Economía / China</td><td>9.4%</td><td>3.3%</td><td><strong>-6.1</strong></td></tr>
+        <tr class="decline"><td>Terrorismo / Rel. Int.</td><td>14.6%</td><td>9.3%</td><td><strong>-5.2</strong></td></tr>
+        <tr class="decline"><td>Derecho y Gobernanza</td><td>18.5%</td><td>13.7%</td><td><strong>-4.8</strong></td></tr>
+    </tbody>
+</table>
+
+<p>El patrón es consistente: los enfoques que ganaron prominencia son orientados a dimensiones experienciales y reproductivas (familias, cuidados, educación), mientras declinan marcos centrados en estructuras macro (economía política, seguridad, regulación). Esto puede interpretarse como una "sociologización" del campo.</p>
+
+<h3>3.4 Composición acumulada</h3>
+
+<div class="figure-box">
+    <a href="fig_stacked.html" target="_blank">📊 Abrir Figura 3: Composición Acumulada (interactiva)</a>
+    <p class="figure-caption">Figura 3. Área apilada: participación relativa de cada tópico por año. El área total = 100% de publicaciones anuales.</p>
+</div>
+
+<p>Esta visualización hace evidente que el crecimiento de algunos tópicos implica la contracción de otros. El "costo de oportunidad" de la consolidación teórica ha sido el desplazamiento de los enfoques económico-políticos que fundaron el campo.</p>
+
+<div class="figure-box">
+    <a href="fig_volume.html" target="_blank">📊 Abrir Figura 4: Volumen y Tendencias (interactiva)</a>
+    <p class="figure-caption">Figura 4. Panel superior: volumen anual de publicaciones. Panel inferior: evolución de tópicos principales.</p>
+</div>
+
+<h2>4. Discusión</h2>
+
+<p>Los hallazgos permiten proponer una periodización basada en evidencia cuantitativa. La primera década (1990-2002) corresponde a una fase de <em>emergencia y delimitación</em>, donde el concepto circula principalmente en estudios de gobernanza, derecho internacional y economía política. El transnacionalismo aparece aquí como descriptor de flujos que desafían la regulación estatal.</p>
+
+<p>La segunda década (2003-2012) constituye la fase de <em>teorización y autonomización</em>. El campo desarrolla marcos analíticos propios, distinguiéndose de disciplinas vecinas. El punto de inflexión 2003-2005 coincide con trabajos que proponen al transnacionalismo como perspectiva teórica y no meramente objeto empírico.</p>
+
+<p>La tercera década (2013-presente) marca la fase de <em>consolidación y giro micro-social</em>. El campo ha estabilizado un núcleo teórico (~30% de su producción), mientras sus preguntas empíricas se reorientan hacia las dimensiones experienciales de la vida transnacional.</p>
+
+<h2>5. Conclusiones</h2>
+
+<p>Este análisis computacional revela un campo que ha transitado desde aproximaciones macro-estructurales hacia perspectivas micro-sociológicas, y desde la descripción empírica hacia la elaboración teórica. La identificación de un punto de inflexión entre 2003-2005 ofrece anclaje temporal para la maduración disciplinaria del campo.</p>
+
+<p>El predominio actual de la reflexión teórica (28.6%) indica consolidación comparable a disciplinas establecidas, pero también plantea riesgos de circularidad. El declive de enfoques económico-políticos puede significar pérdida de capacidad para articular fenómenos transnacionales con dinámicas de acumulación global. Y el giro hacia lo micro-social, siendo bienvenido por su atención a la experiencia vivida, requiere evitar fragmentación en estudios de caso inconmensurables.</p>
+
+<hr>
+
+<h2>Referencias</h2>
+<p style="font-size:0.9em;">
+Glick Schiller, N., Basch, L., & Blanc-Szanton, C. (1992). Transnationalism: A new analytic framework. <em>Annals of the New York Academy of Sciences</em>, 645(1), 1-24.<br><br>
+Levitt, P., & Glick Schiller, N. (2004). Conceptualizing simultaneity: A transnational social field perspective. <em>International Migration Review</em>, 38(3), 1002-1039.<br><br>
+Portes, A., Guarnizo, L. E., & Landolt, P. (1999). The study of transnationalism. <em>Ethnic and Racial Studies</em>, 22(2), 217-237.<br><br>
+Vertovec, S. (2009). <em>Transnationalism</em>. Routledge.
+</p>
+
+</body>
+</html>
